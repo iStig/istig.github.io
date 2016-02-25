@@ -189,6 +189,15 @@
 
     
     
+      
+      
+        
+        
+        
+      
+
+      
+    
 
     
       
@@ -212,215 +221,7 @@
             
               
                 
-                <a class="post-title-link" href="/2016/02/24/2015-2-24-javascriptcore交互ios和android/" itemprop="url">
-                  JavaScriptCore与iOS和Android交互
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-24T21:09:36+08:00" content="2016-02-24">
-              2016-02-24
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><ul>
-<li>本文主要解决的是iOS和Android与JS交互,提供统一解决方案.</li>
-<li>关注点是以最简洁的代码和逻辑来解决三端的交互.</li>
-<li>讨论偏重iOS与JS交互 但会涉及到部分Android代码.</li>
-</ul>
-<h3 id="iOS与JS交互的解决方案-本文讨论JavaScriptCore"><a href="#iOS与JS交互的解决方案-本文讨论JavaScriptCore" class="headerlink" title="iOS与JS交互的解决方案(本文讨论JavaScriptCore)"></a>iOS与JS交互的解决方案(本文讨论JavaScriptCore)</h3><ul>
-<li><a href="xcdoc://?url=developer.apple.com/library/prerelease/ios/documentation/JavaScriptCore/Reference/JSContext_Ref/index.html#//apple_ref/doc/uid/TP40016398-CH1-DontLinkElementID_20" target="_blank" rel="external">JavaScriptCore</a></li>
-<li><a href="https://github.com/fangj/WebViewJavascriptBridge" target="_blank" rel="external">WebViewJavascriptBridge</a></li>
-<li><a href="xcdoc://?url=developer.apple.com/library/prerelease/ios/documentation/WebKit/Reference/WKWebView_Ref/index.html#//apple_ref/swift/cl/c:objc(cs" target="_blank" rel="external">WKWebview</a>WKWebView)</li>
-</ul>
-<h3 id="关于JavaScriptCore"><a href="#关于JavaScriptCore" class="headerlink" title="关于JavaScriptCore"></a>关于JavaScriptCore</h3><ul>
-<li><code>JSContext</code> 代表JS的执行环境，通过<code>-evaluateScript:</code>方法就可以执行JS代码</li>
-<li><code>JSValue</code>   封装了JS与ObjC中的对应的类型，以及调用JS的API等</li>
-<li><code>JSExport</code>  是一个协议，遵守此协议，就可以定义我们自己的协议，在协议中声明的API都会在JS中暴露出来，才能调用</li>
-</ul>
-<h3 id="iOS调用JS代码并传参数"><a href="#iOS调用JS代码并传参数" class="headerlink" title="iOS调用JS代码并传参数"></a>iOS调用JS代码并传参数</h3><pre><code>// 一个JSContext对象，就类似于JS中的Window，只需要创建一次即可
-self.jsContext = [[JSContext alloc] init];
-
-// jscontext可以直接执行JS代码
-[self.jsContext evaluateScript:@&quot;var num = 10&quot;];
-[self.jsContext evaluateScript:@&quot;var names = [&apos;Same&apos;,&apos;Jack&apos;,&apos;Bob&apos;]&quot;];
-[self.jsContext evaluateScript:@&quot;var squareFunc = function(value) { return value * 2 }&quot;];
-
-// 计算正方形的面积方法
-JSValue *square = [self.jsContext evaluateScript:@&quot;squareFunc(num)&quot;];
-
-// 通过下标的方式获取到方法
-JSValue *squareFunc = self.jsContext[@&quot;squareFunc&quot;];
-
-// 获取数组中第一个参数
-JSValue *names = self.jsContext[@&quot;names&quot;];
-JSValue *initialName = names[0];
-
-//JSValue包装了一个JS函数，我们可以从OC代码中使用Foundation类型作为参数来直接调用该函数
-JSValue *value = [squareFunc callWithArguments:@[@&quot;20&quot;]];
-
-// 输出JS调用结果
-NSLog(@&quot;%@&quot;, square.toNumber);
-NSLog(@&quot;%d&quot;, value.toInt32);
-NSLog(@&quot;%@&quot;, initialName.toString);
-</code></pre><h3 id="JS调用iOS-Blocks"><a href="#JS调用iOS-Blocks" class="headerlink" title="JS调用iOS (Blocks)"></a>JS调用iOS (Blocks)</h3><pre><code>// 获取当前JS运行环境
-self.jsContext = [webView valueForKeyPath:@&quot;documentView.webView.mainFrame.javaScriptContext&quot;];
-
-// 将block被赋给JSContext里的一个标识符,JavaScriptCore 会自动的把block封装在JavaScript函数里。这使得在JavaScript中可以简单的使用Foundation和Cocoa类,本例中将韩语参数传入通过CFStringTransform()转义
-self.jsContext[@&quot;simplifyString&quot;] = ^(NSString *input) {
-  NSMutableString *mutableString = [input mutableCopy];
-  CFStringTransform((__bridge CFMutableStringRef)mutableString, NULL, kCFStringTransformToLatin, NO);
-  CFStringTransform((__bridge CFMutableStringRef)mutableString, NULL, kCFStringTransformStripCombiningMarks, NO);
-  return mutableString;
-};
-
-//调用JS代码并且返回参数
-NSLog(@&quot;%@&quot;, [self.jsContext evaluateScript:@&quot;simplifyString(&apos;안녕하새요!&apos;)&quot;]);
-</code></pre><h3 id="JS调用iOS-JSExport"><a href="#JS调用iOS-JSExport" class="headerlink" title="JS调用iOS (JSExport)"></a>JS调用iOS (JSExport)</h3><h6 id="声明实现JSExport协议的协议TestJSObjectProtocol-并声明实现TestJSObjectProtocol协议的类JSNativeMethod"><a href="#声明实现JSExport协议的协议TestJSObjectProtocol-并声明实现TestJSObjectProtocol协议的类JSNativeMethod" class="headerlink" title="声明实现JSExport协议的协议TestJSObjectProtocol 并声明实现TestJSObjectProtocol协议的类JSNativeMethod"></a>声明实现JSExport协议的协议TestJSObjectProtocol 并声明实现TestJSObjectProtocol协议的类JSNativeMethod</h6><pre><code>//首先创建一个实现了JSExport协议的协议
-@protocol TestJSObjectProtocol &lt;JSExport&gt;
-
-//此处我们测试几种参数的情况
-- (NSString *)imgCallBack:(NSString *)url;
-
-// 通过JSON传过来
-- (void)callWithDict:(NSDictionary *)params;
-
-// JS调用此方法来调用OC的系统相册方法
-- (void)callSystemCamera;
-
-// JS调用Oc，然后在OC中通过调用JS方法来传值给JS。
-- (void)jsCallObjcAndObjcCallJsWithDict:(NSDictionary *)params;
-
-// 在JS中调用时，函数名应该为showAlertMsg(arg1, arg2)
-// 这里是只两个参数的。
-- (void)showAlert:(NSString *)title msg:(NSString *)msg;
-@end
-
-@interface JSNativeMethod : NSObject&lt;TestJSObjectProtocol&gt;
-@property (nonatomic, weak) JSContext *jsContext;
-@end
-</code></pre><h6 id="实现遵循JSExport协议的协议方法"><a href="#实现遵循JSExport协议的协议方法" class="headerlink" title="实现遵循JSExport协议的协议方法"></a>实现遵循JSExport协议的协议方法</h6><pre><code>#import &quot;JSNativeMethod.h&quot;
-
-@implementation JSNativeMethod
-
-- (NSString *)imgCallBack:(NSString *)url {
-  NSLog(@&quot;touch image %@&quot;,url);
-  return @&quot;iOS To H5&quot;;
-}
-
-- (void)callWithDict:(NSDictionary *)params {
-  NSLog(@&quot;Js调用了OC的方法，参数为：%@&quot;, params);
-}
-
-// Js调用了callSystemCamera
-- (void)callSystemCamera {
-  NSLog(@&quot;JS调用了OC的方法，调起系统相册&quot;);
-
-  // JS调用后OC后，又通过OC调用JS，但是这个是没有传参数的
-  JSValue *jsFunc = self.jsContext[@&quot;jsFunc&quot;];
-  [jsFunc callWithArguments:nil];
-}
-
-- (void)jsCallObjcAndObjcCallJsWithDict:(NSDictionary *)params {
-  NSLog(@&quot;jsCallObjcAndObjcCallJsWithDict was called, params is %@&quot;, params);
-
-  // 调用JS的方法
-  JSValue *jsParamFunc = self.jsContext[@&quot;jsParamFunc&quot;];
-  [jsParamFunc callWithArguments:@[@{@&quot;age&quot;: @10, @&quot;name&quot;: @&quot;lili&quot;, @&quot;height&quot;: @158}]];
-}
-
-- (void)showAlert:(NSString *)title msg:(NSString *)msg {
-  dispatch_async(dispatch_get_main_queue(), ^{
-    UIAlertView *a = [[UIAlertView alloc] initWithTitle:title message:msg delegate:nil cancelButtonTitle:@&quot;Ok&quot; otherButtonTitles:nil, nil];
-    [a show];
-  });
-}
-@end
-</code></pre><h6 id="把JSNativeMethod封装到JavaScript函数AndroidCall-中"><a href="#把JSNativeMethod封装到JavaScript函数AndroidCall-中" class="headerlink" title="把JSNativeMethod封装到JavaScript函数AndroidCall()中"></a>把JSNativeMethod封装到JavaScript函数AndroidCall()中</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JSNativeMethod *call = [[JSNativeMethod alloc] init];&#10;&#160; //&#23558;JSNativeMethod&#23553;&#35013;&#21040;JavaScript&#20989;&#25968;AndroidCall()&#20013;&#10;&#160; self.jsContext[@&#34;AndroidCall&#34;] = call;&#10;&#160; call.jsContext = self.jsContext;</span><br></pre></td></tr></table></figure>
-<h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><pre><code>// JSContext 还有另外一个有用的招数：通过设置上下文的 exceptionHandler 属性，你可以观察和记录语法，类型以及运行时错误。 exceptionHandler 是一个接收一个 JSContext 引用和异常本身的回调处理
-self.jsContext.exceptionHandler = ^(JSContext *context, JSValue *exceptionValue) {
-  context.exception = exceptionValue;
-  NSLog(@&quot;异常信息：%@&quot;, exceptionValue);
-};
-</code></pre><h3 id="Android对应实现"><a href="#Android对应实现" class="headerlink" title="Android对应实现"></a>Android对应实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">protected void addJsMethod() &#123;&#10;wv_content.addJavascriptInterface(new JSNativeMethod(), &#34;AndroidCall&#34;);&#10;&#125;&#10;&#10;final class JSNativeMethod &#123;&#10;@JavascriptInterface&#10;public String imgCallBack(String url) &#123;&#10;Toast.makeText(mContext, url, Toast.LENGTH_SHORT).show();&#10;return &#34;test android&#34;;&#10;&#125;&#10;&#125;&#10;public void test(View view) &#123;&#10;wv_content.loadUrl(&#34;javascript:test()&#34;);&#10;&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="JavaScript对应实现"><a href="#JavaScript对应实现" class="headerlink" title="JavaScript对应实现"></a>JavaScript对应实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//&#28857;&#20987;&#22270;&#29255;&#20107;&#20214;&#10;&#60;div id=&#39;buttons&#39;&#62;&#60;/div&#62; &#60;div id=&#39;log&#39;&#62;&#60;/div&#62;&#10;&#160; &#160; &#60;div&#62;&#10;&#160; &#160; &#160; &#160; ![](http://upload-images.jianshu.io/upload_images/138651-a619b898f4b69371.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)&#10;&#160; &#160; &#60;/div&#62;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//&#28857;&#20987;&#25353;&#38062;&#20107;&#20214;&#10; &#60;input type=&#34;button&#34; value=&#34;Call ObjC system camera&#34; onclick=&#34;callSystemCamera()&#34;&#62;&#10;&#160;&#60;input type=&#34;button&#34; value=&#34;Call ObjC system alert&#34; onclick=&#34;showAlertMsg(&#39;js title&#39;, &#39;js message&#39;)&#34;&#62;&#10;&#160;&#60;input type=&#34;button&#34; value=&#34;Call ObjC func with JSON &#34; onclick=&#34;callWithDict(&#123;&#39;name&#39;: &#39;testname&#39;, &#39;age&#39;: 10, &#39;height&#39;: 170&#125;)&#34;&#62;&#10;&#160;&#60;input type=&#34;button&#34; value=&#34;Call ObjC func with JSON and ObjC call js func to pass args.&#34; onclick=&#34;jsCallObjcAndObjcCallJsWithDict(&#123;&#39;name&#39;: &#39;testname1&#39;, &#39;age&#39;: 101, &#39;height&#39;: 180&#125;)&#34;&#62;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//app&#31471;callback callSystemCamera()&#10;function callSystemCamera() &#123;&#10;&#160; log(&#34;callSystemCamera()&#34;);&#10;&#160; window.AndroidCall.callSystemCamera();&#10;&#125;&#10;//app&#31471;callback showAlertMsg()&#10;function showAlertMsg(a,b) &#123;&#10;&#160; &#160; &#160; log(JSON.stringify(a));&#10;&#160; &#160; &#160; log(JSON.stringify(b));&#10;&#160; &#160; &#160; window.AndroidCall.showAlertMsg(a,b);&#10;&#125;&#10;//app&#31471;callback callWithDict()&#10;function callWithDict(a) &#123;&#10;&#160; &#160; &#160; log(JSON.stringify(a));&#10;&#160; &#160; &#160; window.AndroidCall.callWithDict(a);&#10;&#125;&#10;//app&#31471;callback jsCallObjcAndObjcCallJsWithDict()&#10;function jsCallObjcAndObjcCallJsWithDict(a) &#123;&#10;&#160; &#160; &#160; log(JSON.stringify(a));&#10;&#160;&#160; &#160; &#160;window.AndroidCall.jsCallObjcAndObjcCallJsWithDict(a);&#10;&#125;&#10;//&#28857;&#20987;&#22270;&#29255;&#20107;&#20214;&#10;function imgCallBack(src) &#123;&#10;&#160; &#160; &#160; &#160; log(&#34;click img&#34;);&#10;&#160; &#160; &#160; &#160; log(JSON.stringify(src));&#10;&#160; &#160; &#160; &#160; if (window.AndroidCall) &#123;&#10;&#160; &#160; &#160; &#160; &#160; &#160; log(&#34;called&#62;&#62;&#62;&#62;&#62;&#34;);&#10; log(window.AndroidCall.imgCallBack(&#39;http://huizuche.com/Content/Images/recommend/car/Jeep_Grand%20Cherokee_L.jpg&#39;));&#10;&#160; &#160; &#160; &#160; &#125;&#10;&#160; &#160; &#160; &#160; else &#123;&#10;&#160; &#160; &#160; &#160; &#160; &#160; alert(&#34;window.AndroidCall is nil&#34;);&#10;&#160; &#160; &#160; &#160; &#125;&#10;&#160; &#160; &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h3><p><a href="https://github.com/iStig/JavaScriptCoreDemo" target="_blank" rel="external">https://github.com/iStig/JavaScriptCoreDemo</a></p>
-<h3 id="扩展阅读"><a href="#扩展阅读" class="headerlink" title="扩展阅读"></a>扩展阅读</h3><p><a href="http://nshipster.cn/javascriptcore/" target="_blank" rel="external">NSHipster</a><br><a href="http://www.henishuo.com/oc-js/" target="_blank" rel="external">OC JavaScriptCore与js交互</a></p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/02/22/hello-world/" itemprop="url">
+                <a class="post-title-link" href="/2016/02/25/hello-world/" itemprop="url">
                   Hello World
                 </a>
               
@@ -434,8 +235,8 @@ self.jsContext.exceptionHandler = ^(JSContext *context, JSValue *exceptionValue)
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-22T18:15:16+08:00" content="2016-02-22">
-              2016-02-22
+            <time itemprop="dateCreated" datetime="2016-02-25T22:03:44+08:00" content="2016-02-25">
+              2016-02-25
             </time>
           </span>
 
@@ -471,6 +272,7 @@ self.jsContext.exceptionHandler = ^(JSContext *context, JSValue *exceptionValue)
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="http://theme-next.iissnan.com/" target="_blank" rel="external">NexT Documentation</a></p>
 
           
         
