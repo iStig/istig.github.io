@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://istig.space/"/>
-  <updated>2016-02-26T06:10:45.000Z</updated>
+  <updated>2016-02-25T14:03:44.000Z</updated>
   <id>http://istig.space/</id>
   
   <author>
@@ -14,74 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>cate2</title>
-    <link href="http://istig.space/2016/02/26/cate2/"/>
-    <id>http://istig.space/2016/02/26/cate2/</id>
-    <published>2016-02-26T06:10:34.000Z</published>
-    <updated>2016-02-26T06:10:45.000Z</updated>
-    
-    <content type="html"></content>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-      <category term="categories" scheme="http://istig.space/tags/categories/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>cate1</title>
-    <link href="http://istig.space/2016/02/26/cate1/"/>
-    <id>http://istig.space/2016/02/26/cate1/</id>
-    <published>2016-02-26T06:09:52.000Z</published>
-    <updated>2016-02-26T06:10:27.000Z</updated>
-    
-    <content type="html"></content>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-      <category term="categories" scheme="http://istig.space/tags/categories/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>has no comments</title>
-    <link href="http://istig.space/2016/02/26/has-no-comments/"/>
-    <id>http://istig.space/2016/02/26/has-no-comments/</id>
-    <published>2016-02-26T06:05:20.000Z</published>
-    <updated>2016-02-26T06:07:28.000Z</updated>
-    
-    <content type="html"></content>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>put into tags</title>
-    <link href="http://istig.space/2016/02/26/put-into-tags/"/>
-    <id>http://istig.space/2016/02/26/put-into-tags/</id>
-    <published>2016-02-26T06:04:44.000Z</published>
-    <updated>2016-02-26T06:07:19.000Z</updated>
-    
-    <content type="html"></content>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>Hello World</title>
