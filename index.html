@@ -228,15 +228,126 @@
 
     
     
+
+    
       
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/16/2015-3-16-我的作品-VR管家/" itemprop="url">
+                  2015-3-16-我的作品
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-16T14:14:20+08:00" content="2016-03-16">
+              2016-03-16
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/16/2015-3-16-我的作品-VR管家/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/16/2015-3-16-我的作品-VR管家/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
       
-        
-        
-        
       
 
       
-    
+        
+          
+            <p><img src="http://upload-images.jianshu.io/upload_images/138651-c8a73894e28fd5a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="VR管家"></p>
+<p>###VR管家 2015年11月－2016年1月</p>
+<hr>
+<p>####项目概况</p>
+<ul>
+<li>360˚全景视频的下载和播放</li>
+<li>与VR眼镜设备通过Socket请求连接,传输数据并且控制VR眼镜设备</li>
+</ul>
+<p>####关键字<br><code>VR眼镜</code> <code>智能硬件</code> <code>Socket通信</code> <code>360˚全景视频</code></p>
+<p>####项目背景</p>
+<ul>
+<li>彼时Youtube刚提供了360˚全景视频资源,了解解析Youtube视频下载链接。</li>
+<li>行业中也兴起了各色VR设备,例如<code>暴风魔镜</code> <code>乐视VR头盔</code>。</li>
+<li>个人喜欢倒腾智能硬件并且看好这块未来的发展。</li>
+</ul>
+<p>####主要职责</p>
+<ul>
+<li>360˚视频的下载模块,包括视频的断点续传,多线程多任务下载,视频的播放,等待缓存,暂停缓存,删除下载任务。</li>
+<li>负责iOS设备与VR眼镜的数据交互,Socket长链接,心跳包设计,手机智能控制VR眼镜的下载视频,下载进度,播放视频。</li>
+<li>负责项目的整体各版本,支持iOS8,iOS9.iPhone各版本尺寸(<code>3.5</code> <code>4.0</code> <code>4.7</code> <code>5.5</code>)</li>
+</ul>
+<p>####一体机流程图<br><img src="http://upload-images.jianshu.io/upload_images/138651-d524c61955aa7c16.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="一体机设备流程.jpg"></p>
+<p>####项目截图<br><img src="http://upload-images.jianshu.io/upload_images/138651-e40ab878be763b14.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="360video.png"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/138651-c55ee058fdb1e9ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="vr设备下载资源.png"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/138651-18fde3993bcd5410.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="360video视频详情正在缓存到一体机.png"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/138651-fefe9c0911e08404.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="一体机输入Wi-Fi密码生成二维码.png"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/138651-6fe43183c84b220e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="一体机可连接的设备.png"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/138651-d96621d9c4aeeeeb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="视频播放页.png"></p>
+<p>######无关的内容乱入<br><img src="http://upload-images.jianshu.io/upload_images/138651-09f00b8dfdde26a6.png?imageMogr2/auto-orient/strip" alt="未满18岁请自觉屏蔽.png"><br><img src="http://upload-images.jianshu.io/upload_images/138651-ac35eba107c368f2.png?imageMogr2/auto-orient/strip" alt="未满18岁请自觉屏蔽.png"></p>
+<p>######开发相关资料和感谢<br><a href="http://www.panframe.com/" target="_blank" rel="external">panframe荷兰供应商负责360˚视频播放模块(付费版)</a><br><a href="https://github.com/hanton/HTY360Player" target="_blank" rel="external">HTY360Player开源360˚视频播放</a><br><a href="https://github.com/robbiehanson/CocoaAsyncSocket" target="_blank" rel="external">CocoaAsyncSocket负责iPhone和VR设备同网段通信</a></p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
 
     
       
@@ -339,6 +450,124 @@
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/24/2015-2-24-javascriptcore交互ios和android/" itemprop="url">
+                  JavaScriptCore与iOS和Android交互
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-24T21:09:36+08:00" content="2016-02-24">
+              2016-02-24
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/24/2015-2-24-javascriptcore交互ios和android/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/24/2015-2-24-javascriptcore交互ios和android/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><ul>
+<li>本文主要解决的是iOS和Android与JS交互,提供统一解决方案.</li>
+<li>关注点是以最简洁的代码和逻辑来解决三端的交互.</li>
+<li>讨论偏重iOS与JS交互 但会涉及到部分Android代码.</li>
+</ul>
+<h3 id="iOS与JS交互的解决方案-本文讨论JavaScriptCore"><a href="#iOS与JS交互的解决方案-本文讨论JavaScriptCore" class="headerlink" title="iOS与JS交互的解决方案(本文讨论JavaScriptCore)"></a>iOS与JS交互的解决方案(本文讨论JavaScriptCore)</h3><ul>
+<li><a href="">JavaScriptCore</a></li>
+<li><a href="https://github.com/fangj/WebViewJavascriptBridge" target="_blank" rel="external">WebViewJavascriptBridge</a></li>
+<li><a href="">WKWebview</a></li>
+</ul>
+<h3 id="关于JavaScriptCore"><a href="#关于JavaScriptCore" class="headerlink" title="关于JavaScriptCore"></a>关于JavaScriptCore</h3><ul>
+<li><code>JSContext</code> 代表JS的执行环境，通过<code>-evaluateScript:</code>方法就可以执行JS代码</li>
+<li><code>JSValue</code>   封装了JS与ObjC中的对应的类型，以及调用JS的API等</li>
+<li><code>JSExport</code>  是一个协议，遵守此协议，就可以定义我们自己的协议，在协议中声明的API都会在JS中暴露出来，才能调用</li>
+</ul>
+<h3 id="iOS调用JS代码并传参数"><a href="#iOS调用JS代码并传参数" class="headerlink" title="iOS调用JS代码并传参数"></a>iOS调用JS代码并传参数</h3><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 一个JSContext对象，就类似于JS中的Window，只需要创建一次即可</span></span><br><span class="line"><span class="keyword">self</span><span class="variable">.jsContext</span> = [[JSContext alloc] init];</span><br><span class="line"></span><br><span class="line"><span class="comment">// jscontext可以直接执行JS代码</span></span><br><span class="line">[<span class="keyword">self</span><span class="variable">.jsContext</span> evaluateScript:<span class="string">@"var num = 10"</span>];</span><br><span class="line">[<span class="keyword">self</span><span class="variable">.jsContext</span> evaluateScript:<span class="string">@"var names = ['Same','Jack','Bob']"</span>];</span><br><span class="line">[<span class="keyword">self</span><span class="variable">.jsContext</span> evaluateScript:<span class="string">@"var squareFunc = function(value) &#123; return value * 2 &#125;"</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 计算正方形的面积方法</span></span><br><span class="line">JSValue *square = [<span class="keyword">self</span><span class="variable">.jsContext</span> evaluateScript:<span class="string">@"squareFunc(num)"</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 通过下标的方式获取到方法</span></span><br><span class="line">JSValue *squareFunc = <span class="keyword">self</span><span class="variable">.jsContext</span>[<span class="string">@"squareFunc"</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取数组中第一个参数</span></span><br><span class="line">JSValue *names = <span class="keyword">self</span><span class="variable">.jsContext</span>[<span class="string">@"names"</span>];</span><br><span class="line">JSValue *initialName = names[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">//JSValue包装了一个JS函数，我们可以从OC代码中使用Foundation类型作为参数来直接调用该函数</span></span><br><span class="line">JSValue *value = [squareFunc callWithArguments:@[<span class="string">@"20"</span>]];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出JS调用结果</span></span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, square<span class="variable">.toNumber</span>);</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"%d"</span>, value<span class="variable">.toInt32</span>);</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, initialName<span class="variable">.toString</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="JS调用iOS-Blocks"><a href="#JS调用iOS-Blocks" class="headerlink" title="JS调用iOS (Blocks)"></a>JS调用iOS (Blocks)</h3><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取当前JS运行环境</span></span><br><span class="line"><span class="keyword">self</span><span class="variable">.jsContext</span> = [webView valueForKeyPath:<span class="string">@"documentView.webView.mainFrame.javaScriptContext"</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将block被赋给JSContext里的一个标识符,JavaScriptCore 会自动的把block封装在JavaScript函数里。这使得在JavaScript中可以简单的使用Foundation和Cocoa类,本例中将韩语参数传入通过CFStringTransform()转义</span></span><br><span class="line"><span class="keyword">self</span><span class="variable">.jsContext</span>[<span class="string">@"simplifyString"</span>] = ^(<span class="built_in">NSString</span> *input) &#123;</span><br><span class="line">  <span class="built_in">NSMutableString</span> *mutableString = [input mutableCopy];</span><br><span class="line">  <span class="built_in">CFStringTransform</span>((__bridge <span class="built_in">CFMutableStringRef</span>)mutableString, <span class="literal">NULL</span>, k<span class="built_in">CFStringTransformToLatin</span>, <span class="literal">NO</span>);</span><br><span class="line">  <span class="built_in">CFStringTransform</span>((__bridge <span class="built_in">CFMutableStringRef</span>)mutableString, <span class="literal">NULL</span>, k<span class="built_in">CFStringTransformStripCombiningMarks</span>, <span class="literal">NO</span>);</span><br><span class="line">  <span class="keyword">return</span> mutableString;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//调用JS代码并且返回参数</span></span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, [<span class="keyword">self</span><span class="variable">.jsContext</span> evaluateScript:<span class="string">@"simplifyString('안녕하새요!')"</span>]);</span><br></pre></td></tr></table></figure>
+<h3 id="JS调用iOS-JSExport"><a href="#JS调用iOS-JSExport" class="headerlink" title="JS调用iOS (JSExport)"></a>JS调用iOS (JSExport)</h3><h6 id="声明实现JSExport协议的协议TestJSObjectProtocol-并声明实现TestJSObjectProtocol协议的类JSNativeMethod"><a href="#声明实现JSExport协议的协议TestJSObjectProtocol-并声明实现TestJSObjectProtocol协议的类JSNativeMethod" class="headerlink" title="声明实现JSExport协议的协议TestJSObjectProtocol 并声明实现TestJSObjectProtocol协议的类JSNativeMethod"></a>声明实现JSExport协议的协议TestJSObjectProtocol 并声明实现TestJSObjectProtocol协议的类JSNativeMethod</h6><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//首先创建一个实现了JSExport协议的协议</span></span><br><span class="line"><span class="class"><span class="keyword">@protocol</span> <span class="title">TestJSObjectProtocol</span> &lt;<span class="title">JSExport</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//此处我们测试几种参数的情况</span></span><br><span class="line">- (<span class="built_in">NSString</span> *)imgCallBack:(<span class="built_in">NSString</span> *)url;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 通过JSON传过来</span></span><br><span class="line">- (<span class="keyword">void</span>)callWithDict:(<span class="built_in">NSDictionary</span> *)params;</span><br><span class="line"></span><br><span class="line"><span class="comment">// JS调用此方法来调用OC的系统相册方法</span></span><br><span class="line">- (<span class="keyword">void</span>)callSystemCamera;</span><br><span class="line"></span><br><span class="line"><span class="comment">// JS调用Oc，然后在OC中通过调用JS方法来传值给JS。</span></span><br><span class="line">- (<span class="keyword">void</span>)jsCallObjcAndObjcCallJsWithDict:(<span class="built_in">NSDictionary</span> *)params;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在JS中调用时，函数名应该为showAlertMsg(arg1, arg2)</span></span><br><span class="line"><span class="comment">// 这里是只两个参数的。</span></span><br><span class="line">- (<span class="keyword">void</span>)showAlert:(<span class="built_in">NSString</span> *)title msg:(<span class="built_in">NSString</span> *)msg;</span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">JSNativeMethod</span> : <span class="title">NSObject</span>&lt;<span class="title">TestJSObjectProtocol</span>&gt;</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">weak</span>) JSContext *jsContext;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<h6 id="实现遵循JSExport协议的协议方法"><a href="#实现遵循JSExport协议的协议方法" class="headerlink" title="实现遵循JSExport协议的协议方法"></a>实现遵循JSExport协议的协议方法</h6><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">   <span class="preprocessor">#import <span class="title">"JSNativeMethod.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">JSNativeMethod</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="built_in">NSString</span> *)imgCallBack:(<span class="built_in">NSString</span> *)url &#123;</span><br><span class="line">  <span class="built_in">NSLog</span>(<span class="string">@"touch image %@"</span>,url);</span><br><span class="line">  <span class="keyword">return</span> <span class="string">@"iOS To H5"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)callWithDict:(<span class="built_in">NSDictionary</span> *)params &#123;</span><br><span class="line">  <span class="built_in">NSLog</span>(<span class="string">@"Js调用了OC的方法，参数为：%@"</span>, params);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Js调用了callSystemCamera</span></span><br><span class="line">- (<span class="keyword">void</span>)callSystemCamera &#123;</span><br><span class="line">  <span class="built_in">NSLog</span>(<span class="string">@"JS调用了OC的方法，调起系统相册"</span>);</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// JS调用后OC后，又通过OC调用JS，但是这个是没有传参数的</span></span><br><span class="line">  JSValue *jsFunc = <span class="keyword">self</span><span class="variable">.jsContext</span>[<span class="string">@"jsFunc"</span>];</span><br><span class="line">  [jsFunc callWithArguments:<span class="literal">nil</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)jsCallObjcAndObjcCallJsWithDict:(<span class="built_in">NSDictionary</span> *)params &#123;</span><br><span class="line">  <span class="built_in">NSLog</span>(<span class="string">@"jsCallObjcAndObjcCallJsWithDict was called, params is %@"</span>, params);</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 调用JS的方法</span></span><br><span class="line">  JSValue *jsParamFunc = <span class="keyword">self</span><span class="variable">.jsContext</span>[<span class="string">@"jsParamFunc"</span>];</span><br><span class="line">  [jsParamFunc callWithArguments:@[@&#123;<span class="string">@"age"</span>: @<span class="number">10</span>, <span class="string">@"name"</span>: <span class="string">@"lili"</span>, <span class="string">@"height"</span>: @<span class="number">158</span>&#125;]];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)showAlert:(<span class="built_in">NSString</span> *)title msg:(<span class="built_in">NSString</span> *)msg &#123;</span><br><span class="line">  <span class="built_in">dispatch_async</span>(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">    <span class="built_in">UIAlertView</span> *a = [[<span class="built_in">UIAlertView</span> alloc] initWithTitle:title message:msg delegate:<span class="literal">nil</span> cancelButtonTitle:<span class="string">@"Ok"</span> otherButtonTitles:<span class="literal">nil</span>, <span class="literal">nil</span>];</span><br><span class="line">    [a show];</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>######把JSNativeMethod封装到JavaScript函数AndroidCall()中</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">JSNativeMethod *<span class="keyword">call</span> = [[JSNativeMethod alloc] init];</span><br><span class="line">  <span class="comment">//将JSNativeMethod封装到JavaScript函数AndroidCall()中</span></span><br><span class="line">  self.jsContext[@<span class="string">"AndroidCall"</span>] = <span class="keyword">call</span>;</span><br><span class="line">  <span class="keyword">call</span>.jsContext = self.jsContext;</span><br></pre></td></tr></table></figure>
+<h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JSContext 还有另外一个有用的招数：通过设置上下文的 exceptionHandler 属性，你可以观察和记录语法，类型以及运行时错误。 exceptionHandler 是一个接收一个 JSContext 引用和异常本身的回调处理</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">self</span><span class="variable">.jsContext</span><span class="variable">.exceptionHandler</span> = ^(JSContext *context, JSValue *exceptionValue) &#123;</span><br><span class="line">      context<span class="variable">.exception</span> = exceptionValue;</span><br><span class="line">      <span class="built_in">NSLog</span>(<span class="string">@"异常信息：%@"</span>, exceptionValue);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="Android对应实现"><a href="#Android对应实现" class="headerlink" title="Android对应实现"></a>Android对应实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">addJsMethod</span><span class="params">()</span> </span>&#123;</span><br><span class="line">wv_content.addJavascriptInterface(<span class="keyword">new</span> JSNativeMethod(), <span class="string">"AndroidCall"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">JSNativeMethod</span> </span>&#123;</span><br><span class="line"><span class="annotation">@JavascriptInterface</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">imgCallBack</span><span class="params">(String url)</span> </span>&#123;</span><br><span class="line">Toast.makeText(mContext, url, Toast.LENGTH_SHORT).show();</span><br><span class="line"><span class="keyword">return</span> <span class="string">"test android"</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">wv_content.loadUrl(<span class="string">"javascript:test()"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="JavaScript对应实现"><a href="#JavaScript对应实现" class="headerlink" title="JavaScript对应实现"></a>JavaScript对应实现</h3><figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//点击图片事件</span></span><br><span class="line">&lt;<span class="keyword">div</span> id=<span class="string">'buttons'</span>&gt;&lt;/<span class="keyword">div</span>&gt; &lt;<span class="keyword">div</span> id=<span class="string">'log'</span>&gt;&lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">    &lt;<span class="keyword">div</span>&gt;</span><br><span class="line">        ![](http:<span class="comment">//upload-images.jianshu.io/upload_images/138651-a619b898f4b69371.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span></span><br><span class="line">    &lt;/<span class="keyword">div</span>&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight scilab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//点击按钮事件</span></span><br><span class="line"> &lt;input type=<span class="string">"button"</span> value=<span class="string">"Call ObjC system camera"</span> onclick=<span class="string">"callSystemCamera()"</span>&gt;</span><br><span class="line"> &lt;input type=<span class="string">"button"</span> value=<span class="string">"Call ObjC system alert"</span> onclick=<span class="string">"showAlertMsg('</span>js <span class="transposed_variable">title'</span>, <span class="string">'js message'</span>)<span class="string">"&gt;</span><br><span class="line"> &lt;input type="</span>button<span class="string">" value="</span>Call ObjC func with JSON <span class="string">" onclick="</span>callWithDict(&#123;<span class="string">'name'</span>: <span class="string">'testname'</span>, <span class="string">'age'</span>: <span class="number">10</span>, <span class="string">'height'</span>: <span class="number">170</span>&#125;)<span class="string">"&gt;</span><br><span class="line"> &lt;input type="</span>button<span class="string">" value="</span>Call ObjC func with JSON <span class="built_in">and</span> ObjC call js func to pass <span class="transposed_variable">args.</span><span class="string">" onclick="</span>jsCallObjcAndObjcCallJsWithDict(&#123;<span class="string">'name'</span>: <span class="string">'testname1'</span>, <span class="string">'age'</span>: <span class="number">101</span>, <span class="string">'height'</span>: <span class="number">180</span>&#125;)<span class="string">"&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//app端callback callSystemCamera()</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callSystemCamera</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  log(<span class="string">"callSystemCamera()"</span>);</span><br><span class="line">  <span class="built_in">window</span>.AndroidCall.callSystemCamera();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//app端callback showAlertMsg()</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showAlertMsg</span>(<span class="params">a,b</span>) </span>&#123;</span><br><span class="line">      log(<span class="built_in">JSON</span>.stringify(a));</span><br><span class="line">      log(<span class="built_in">JSON</span>.stringify(b));</span><br><span class="line">      <span class="built_in">window</span>.AndroidCall.showAlertMsg(a,b);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//app端callback callWithDict()</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callWithDict</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">      log(<span class="built_in">JSON</span>.stringify(a));</span><br><span class="line">      <span class="built_in">window</span>.AndroidCall.callWithDict(a);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//app端callback jsCallObjcAndObjcCallJsWithDict()</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">jsCallObjcAndObjcCallJsWithDict</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">      log(<span class="built_in">JSON</span>.stringify(a));</span><br><span class="line">      <span class="built_in">window</span>.AndroidCall.jsCallObjcAndObjcCallJsWithDict(a);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//点击图片事件</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">imgCallBack</span>(<span class="params">src</span>) </span>&#123;</span><br><span class="line">        log(<span class="string">"click img"</span>);</span><br><span class="line">        log(<span class="built_in">JSON</span>.stringify(src));</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">window</span>.AndroidCall) &#123;</span><br><span class="line">            log(<span class="string">"called&gt;&gt;&gt;&gt;&gt;"</span>);</span><br><span class="line"> log(<span class="built_in">window</span>.AndroidCall.imgCallBack(<span class="string">'http://huizuche.com/Content/Images/recommend/car/Jeep_Grand%20Cherokee_L.jpg'</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            alert(<span class="string">"window.AndroidCall is nil"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h3><p><a href="https://github.com/iStig/JavaScriptCoreDemo" target="_blank" rel="external">https://github.com/iStig/JavaScriptCoreDemo</a></p>
+<h3 id="扩展阅读"><a href="#扩展阅读" class="headerlink" title="扩展阅读"></a>扩展阅读</h3><p><a href="http://nshipster.cn/javascriptcore/" target="_blank" rel="external">NSHipster</a><br><a href="http://www.henishuo.com/oc-js/" target="_blank" rel="external">OC JavaScriptCore与js交互</a><br><a href="http://dwtedx.com/itshare_282.html" target="_blank" rel="external">Android</a><br><a href="https://github.com/zhaiyjgithub/JavaScriptCore-article" target="_blank" rel="external">WebView与JavaScriptcore实践</a><br><a href="http://ios.jobbole.com/83945/" target="_blank" rel="external">Objective-C与JavaScript交互的那些事</a></p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
 
   </section>
 
@@ -381,7 +610,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">3</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
